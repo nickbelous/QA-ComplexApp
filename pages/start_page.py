@@ -18,7 +18,7 @@ class StartPage(BasePage):
         self.fill_field(by=By.XPATH, locator=self.constants.SIGN_IN_PASSWORD_XPATH, value=password_value)
         self.log.debug("Fields are filled with invalid value")
         # Find Sign In button
-        button = self.driver.find_element(by=By.XPATH, value=self.constants.SIGN_IN_BUTTON_XPATH)
+        button = self.wait_until_find_element(by=By.XPATH, value=self.constants.SIGN_IN_BUTTON_XPATH)
         # Click button
         button.click()
         self.log.debug("Clicked on 'Sign In' button")
@@ -26,7 +26,7 @@ class StartPage(BasePage):
     def verify_incorrect_login(self):
         """Verify error message on invalid login"""
         # Find error message
-        message = self.driver.find_element(by=By.XPATH, value=self.constants.SIGN_IN_ERROR_MESSAGE_XPATH)
+        message = self.wait_until_find_element(by=By.XPATH, value=self.constants.SIGN_IN_ERROR_MESSAGE_XPATH)
         # Verify message
         assert message.text == self.constants.SIGN_IN_ERROR_MESSAGE_TEXT_XPATH
 
@@ -42,6 +42,5 @@ class StartPage(BasePage):
         sleep(1)
 
         # Click on Sign Up button
-        self.driver.find_element(by=By.XPATH, value=self.constants.SIGN_UP_BUTTON_XPATH).click()
-        sleep(1)
+        self.wait_until_find_element(by=By.XPATH, value=self.constants.SIGN_UP_BUTTON_XPATH).click()
         self.log.debug("User was registered")

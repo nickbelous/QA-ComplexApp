@@ -19,6 +19,7 @@ class TestStartPage(BaseTest):
         """Create and return driver, close after test"""
         # Create driver
         driver = webdriver.WebDriver(BaseConstants.DRIVER_PATH)
+        driver.implicitly_wait(2)
         yield driver
         driver.close()
 
@@ -44,7 +45,6 @@ class TestStartPage(BaseTest):
         """
 
         start_page.login("", "")
-        sleep(3)
         self.log.info("Error message to expected")
 
     def test_invalid_login(self, start_page):
