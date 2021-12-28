@@ -13,7 +13,6 @@ class BasePage:
     def fill_field(self, by, locator, value):
         """Fill field using provided variables """
         username = self.wait_until_find_element(by=by, value=locator)
-        # username = self.driver.find_element(by=by, value=locator)
         username.clear()
         username.send_keys(value)
 
